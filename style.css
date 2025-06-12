@@ -2,10 +2,12 @@
 
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #000; /* Force black background */
-  color: white;
+  padding: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: linear-gradient(135deg, #000000, #0d0d0d);
+  color: #fff;
   text-align: center;
+  animation: pulseBg 20s infinite alternate;
   overflow-x: hidden;
 }
 
