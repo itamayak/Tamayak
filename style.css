@@ -19,3 +19,11 @@ h1, h2, h3 {
     0 0 10px #e91e63,
     0 0 20px #e91e63;
 }
+
+.btn:hover {
+  box-shadow:
+    0 0 10px #e91e63,
+    0 0 20px #e91e63,
+    0 0 30px #e91e63;
+  transition: box-shadow 0.3s ease;
+}
