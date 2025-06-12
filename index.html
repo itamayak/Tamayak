@@ -5,42 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>TAMAYAK - Official Music Website</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #000;
-      color: white;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #000000, #0d0d0d);
+      color: #fff;
       text-align: center;
+      animation: pulseBg 20s infinite alternate;
     }
+
+    @keyframes pulseBg {
+      0% { background: linear-gradient(135deg, #000000, #0d0d0d); }
+      100% { background: linear-gradient(135deg, #111111, #1a0033); }
+    }
+
     header img {
       width: 100%;
       max-height: 300px;
       object-fit: cover;
     }
+
     h1 {
-      font-size: 2.5em;
-      margin-top: 10px;
+      font-size: 3em;
+      margin: 20px 0 10px;
+      color: #00fff7;
+      text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7, 0 0 30px #00fff7;
     }
+
     .subtitle {
       font-size: 1.2em;
       color: #ccc;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 5px #666;
     }
+
     .btn {
       display: inline-block;
-      background: #e91e63;
-      color: white;
+      background: transparent;
+      color: #e91e63;
+      border: 2px solid #e91e63;
       padding: 12px 20px;
       margin: 10px;
-      border: none;
       border-radius: 8px;
       font-size: 1em;
       text-decoration: none;
+      box-shadow: 0 0 8px #e91e63, 0 0 16px #e91e63;
+      transition: all 0.3s ease;
     }
+
+    .btn:hover {
+      background: #e91e63;
+      color: black;
+      box-shadow: 0 0 12px #ff4081, 0 0 24px #ff4081;
+    }
+
     audio {
-      margin-top: 20px;
+      margin: 20px auto;
       width: 90%;
       max-width: 400px;
+      filter: drop-shadow(0 0 5px #00fff7);
+    }
+
+    h2 {
+      margin-top: 40px;
+      color: #ff00cc;
+      text-shadow: 0 0 10px #ff00cc, 0 0 20px #ff00cc;
     }
   </style>
 </head>
@@ -54,9 +85,21 @@
   <p class="subtitle">Official Music Website</p>
 
   <audio controls>
-  <source src="tamayak.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
+    <source src="tamayak.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
+
+  <section class="glass-card">
+  <h2>About Tamayak</h2>
+  <p class="bio-text">
+    Tamayak is an experimental electronic artist fusing retro synthwave with futuristic beats. Known for vibrant soundscapes and dark neon vibes, Tamayak creates immersive music for the digital generation.
+  </p>
+  <h3>Upcoming Releases</h3>
+  <ul class="release-list">
+    <li><strong>June 28, 2025</strong> – “Cyber Ghost” (Single)</li>
+    <li><strong>August 15, 2025</strong> – “Neon Reverie” (EP)</li>
+  </ul>
+  </section>
 
   <h2>Listen Now</h2>
   <a class="btn" href="https://youtube.com/@itamayak" target="_blank">YouTube</a>
@@ -66,6 +109,7 @@
 
   <h2>Follow Tamayak</h2>
   <a class="btn" href="https://www.facebook.com/share/1Bnpu1EK4G/" target="_blank">Facebook</a>
+  <a class="btn" href="https://www.facebook.com/share/15U9NsyVZG/" target="_blank">Facebook (Alt)</a>
   <a class="btn" href="https://www.instagram.com/itamayak" target="_blank">Instagram</a>
   <a class="btn" href="https://www.tiktok.com/@itamayak" target="_blank">TikTok</a>
 
