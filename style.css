@@ -1,30 +1,21 @@
-.glass-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  margin: 40px auto;
-  padding: 30px;
-  max-width: 600px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 0 20px rgba(255, 0, 150, 0.3), 0 0 40px rgba(0, 255, 255, 0.2);
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.glass-card h2, .glass-card h3 {
-  color: #00fff7;
-  text-shadow: 0 0 10px #00fff7;
-  margin-bottom: 10px;
+.release-list li {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: var(--delay);
 }
 
-.bio-text {
-  color: #ccc;
-  font-size: 1em;
-  margin-bottom: 20px;
-}
-
-.release-list {
-  list-style: none;
-  padding: 0;
-  color: #ff99ff;
-  font-family: monospace;
-  text-shadow: 0 0 5px #ff00cc;
-}
+.release-list li:nth-child(1) { --delay: 0s; }
+.release-list li:nth-child(2) { --delay: 0.2s; }
+.release-list li:nth-child(3) { --delay: 0.4s; }
+.release-list li:nth-child(4) { --delay: 0.6s; }
