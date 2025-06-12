@@ -1,21 +1,30 @@
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: #000;
+  color: white;
+  text-align: center;
 }
 
-.release-list li {
-  opacity: 0;
-  animation: fadeInUp 0.8s ease forwards;
-  animation-delay: var(--delay);
+h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif;
+  text-shadow: 0 0 8px #0ff, 0 0 16px #0ff, 0 0 24px #0ff;
+  color: #00ffff;
 }
 
-.release-list li:nth-child(1) { --delay: 0s; }
-.release-list li:nth-child(2) { --delay: 0.2s; }
-.release-list li:nth-child(3) { --delay: 0.4s; }
-.release-list li:nth-child(4) { --delay: 0.6s; }
+.bio-text {
+  color: #ccc;
+  font-size: 1em;
+  margin-bottom: 20px;
+  line-height: 1.6;
+  text-shadow: 0 0 4px rgba(255,255,255,0.2);
+}
+
+.release-list {
+  list-style: none;
+  padding: 0;
+  font-family: 'Orbitron', monospace;
+  color: #ff99ff;
+  font-size: 1em;
+  text-shadow: 0 0 5px #ff00cc, 0 0 10px #ff00cc;
+}
