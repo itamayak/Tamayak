@@ -1,60 +1,681 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TAMAYAK - Official Music Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamayak | Official Artist Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
- 
-  <!-- Link to external stylesheet -->
-  <link rel="stylesheet" href="style.css">
+        :root {
+            --primary: #ff006e;
+            --secondary: #8338ec;
+            --accent: #3a86ff;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0a0a0a, #1a1a2e, #16213e);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--primary);
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--secondary);
+            bottom: -50px;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 10, 0.5);
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--light) 0%, var(--primary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(255, 0, 110, 0.5)); }
+            to { filter: drop-shadow(0 0 40px rgba(255, 0, 110, 0.8)); }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        .cta-button {
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 0, 110, 0.4);
+        }
+
+        /* Music Player Section */
+        .music-section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        .player-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .now-playing {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .album-art {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 10px 40px rgba(255, 0, 110, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .album-art::before {
+            content: '♪';
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .track-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .track-info p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+        }
+
+        .audio-player {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        audio {
+            width: 100%;
+            height: 50px;
+            border-radius: 25px;
+        }
+
+        audio::-webkit-media-controls-panel {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .playlist {
+            margin-top: 30px;
+            display: grid;
+            gap: 15px;
+        }
+
+        .track-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .track-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+            transform: translateX(10px);
+        }
+
+        .track-item.active {
+            background: rgba(255, 0, 110, 0.2);
+            border-color: var(--primary);
+        }
+
+        .track-number {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            margin-right: 15px;
+            font-weight: 700;
+        }
+
+        .track-name {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .track-duration {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Upcoming Releases */
+        .releases-section {
+            padding: 100px 50px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .releases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .release-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .release-card::before {
+            content: 'COMING SOON';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 10;
+        }
+
+        .release-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 0, 110, 0.2);
+        }
+
+        .release-cover {
+            height: 250px;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .release-cover::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .release-info {
+            padding: 25px;
+        }
+
+        .release-date {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .release-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .release-desc {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Social Media & Contact */
+        .connect-section {
+            padding: 100px 50px;
+            text-align: center;
+        }
+
+        .social-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(255, 0, 110, 0.3);
+        }
+
+        .social-link:hover::before {
+            opacity: 1;
+        }
+
+        .email-section {
+            margin-top: 50px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .email-section h3 {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .email-link:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .music-section, .releases-section, .connect-section {
+                padding: 60px 20px;
+            }
+
+            .now-playing {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .album-art {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+    </style>
 </head>
 <body>
+    <div class="bg-animation"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
 
-  <header>
-    <img src="header.jpg" alt="Tamayak Header Image">
-  </header>
+    <nav>
+        <div class="logo">TAMAYAK</div>
+        <ul class="nav-links">
+            <li><a href="#music">Music</a></li>
+            <li><a href="#releases">Releases</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-  <h1>TAMAYAK</h1>
-  <p class="subtitle">Official Music Website</p>
+    <section class="hero">
+        <h1>TAMAYAK</h1>
+        <p>Official Artist Page</p>
+        <a href="#music" class="cta-button">Listen Now</a>
+    </section>
 
-  <audio controls>
-    <source src="tamayak.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
+    <section id="music" class="music-section">
+        <h2 class="section-title">Latest Tracks</h2>
+        <div class="player-container">
+            <div class="now-playing">
+                <div class="album-art"></div>
+                <div class="track-info">
+                    <h3 id="currentTrack">Select a Track</h3>
+                    <p id="currentArtist">Tamayak</p>
+                </div>
+            </div>
+            
+            <div class="audio-player">
+                <audio id="audioPlayer" controls>
+                    <!-- Palitan mo ang src ng iyong MP3 file -->
+                    <source src="music/your-song.mp3" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
 
-  <section class="glass-card">
-    <h2>About Tamayak</h2>
-    <p class="bio-text">
-      Tamayak is an independent artist blending R&B, Hip-hop Soul, Emo Trap, and Maranao culture into music rooted in identity and healing.
-    </p>
-    <h3>Upcoming Releases</h3>
-    <ul class="release-list">
-      <li><strong>October 17, 2025</strong> – “Laan”</li>
-      <li><strong>October 31, 2025</strong> – “EP SERYA”</li>
-    </ul>
-  </section>
+            <div class="playlist">
+                <div class="track-item active" onclick="playTrack(this, 'Track 1 Title', 'music/track1.mp3')">
+                    <span class="track-number">01</span>
+                    <span class="track-name">Track One Title</span>
+                    <span class="track-duration">3:45</span>
+                </div>
+                <div class="track-item" onclick="playTrack(this, 'Track 2 Title', 'music/track2.mp3')">
+                    <span class="track-number">02</span>
+                    <span class="track-name">Track Two Title</span>
+                    <span class="track-duration">4:12</span>
+                </div>
+                <div class="track-item" onclick="playTrack(this, 'Track 3 Title', 'music/track3.mp3')">
+                    <span class="track-number">03</span>
+                    <span class="track-name">Track Three Title</span>
+                    <span class="track-duration">3:28</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <h2>Listen Now</h2>
-  <a class="btn" href="https://youtube.com/@itamayak" target="_blank">YouTube</a>
-  <a class="btn" href="https://music.youtube.com/channel/UCxmCN6CaMPTFlsXoesqv4Ug" target="_blank">YouTube Music</a>
-  <a class="btn" href="https://open.spotify.com/artist/5us6uhWFasdqux65evdTVW" target="_blank">Spotify</a>
-  <a class="btn" href="https://music.apple.com/us/artist/tamayak/1807906216" target="_blank">Apple Music</a>
-  <a class="btn" href="https://www.boomplay.com/artists/109158577" target="_blank">Boomplay</a>
-  <a class="btn" href="https://m.soundcloud.com/itamayak" target="_blank">Soundcloud</a>
-  <a class="btn" href="https://music.amazon.in/artists/B0F4JY59TZ/tamayak" target="_blank">Amazon Music</a>
-  <a class="btn" href="https://audiomack.com/iTamayak" target="_blank">Audiomack</a>
+    <section id="releases" class="releases-section">
+        <h2 class="section-title">Incoming Releases</h2>
+        <div class="releases-grid">
+            <div class="release-card">
+                <div class="release-cover">🎵</div>
+                <div class="release-info">
+                    <div class="release-data">📅 April 10 2026</div>
+                    <h3 class="Tanggapan">Upcoming Single Title</h3>
+                    <p class="release-desc">Description of your upcoming release. Exciting new track coming soon!</p>
+                </div>
+            </div>
+            <div class="release-card">
+                <div class="release-cover">🎵</div>
+                <div class="release-info">
+                    <div class="release-date">📅 May 2026</div>
+                    <h3 class="release-title">EP Title Here</h3>
+                    <p class="release-desc">Details about your upcoming EP or album release.</p>
+                </div>
+            </div>
+            <div class="release-card">
+                <div class="release-cover">🎵</div>
+                <div class="release-info">
+                    <div class="release-date">📅 June 2026</div>
+                    <h3 class="release-title">Collaboration Track</h3>
+                    <p class="release-desc">Featuring artist name - exciting collaboration announcement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <h2>Follow Tamayak</h2>
-  <a class="btn" href="https://www.facebook.com/share/1Bnpu1EK4G/" target="_blank">Facebook</a>
-  <a class="btn" href="https://www.facebook.com/share/15U9NsyVZG/" target="_blank">Facebook Page</a>
-  <a class="btn" href="https://www.instagram.com/itamayak" target="_blank">Instagram</a>
-  <a class="btn" href="https://www.tiktok.com/@itamayak" target="_blank">TikTok</a>
-  <a class="btn" href="https://x.com/tamayakai" target="_blank">X</a>
+    <section id="contact" class="connect-section">
+        <h2 class="section-title">Connect With Me</h2>
+        
+        <div class="social-grid">
+            <!-- Palitan mo ang href ng iyong social media links -->
+            <a href="https://instagram.com/itamayak" target="_blank" class="social-link" title="Instagram">
+                📷
+            </a>
+            <a href="https://open.spotify.com/artist/5us6uhWFasdqux65evdTVW" target="_blank" class="social-link" title="Spotify">
+                🎧
+            </a>
+            <a href="https://youtube.com/iTamayak" target="_blank" class="social-link" title="YouTube">
+                📺
+            </a>
+            <a href="https://tiktok.com/@itamayak" target="_blank" class="social-link" title="TikTok">
+                🎵
+            </a>
+            <a href="https://facebook.com/itamayak" target="_blank" class="social-link" title="Facebook">
+                👍
+            </a>
+            <a href="https://twitter.com/tamayakai" target="_blank" class="social-link" title="Twitter/X">
+                🐦
+            </a>
+        </div>
 
-</body>
-  <h2>Contact Tamayak</h2>
-<p class="contact-text">For bookings, collaborations, or inquiries, reach out:</p>
-<a class="btn" href="mailto: metamayak@gmail.com">Email Me</a>
-</html>
+        <div class="email-section">
+            <h3>For Bookings & Inquiries</h3>
+            <!-- Palitan mo ang email address -->
+            <a href="mailto:your-metayamak@gmail.com" class="email-l
