@@ -1,38 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Rajdhani', sans-serif;
-  background: linear-gradient(135deg, #000000, #0d0d0d);
-  color: #fff;
-  text-align: center;
-  animation: pulseBg 20s infinite alternate;
-  overflow-x: hidden;
+.release-cover {
+    height: 250px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Neon Title */
-h1 {
-  font-family: 'Orbitron', sans-serif;
-  font-size: 3em;
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;
-  margin-top: 20px;
+.release-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
 }
 
-/* Subtitle */
-.subtitle {
-  font-size: 1.2em;
-  color: #aaa;
-  margin-bottom: 20px;
-  text-shadow: 0 0 3px #aaa;
+.release-card:hover .release-cover img {
+    transform: scale(1.1);
 }
 
-/* Header Image */
-header img {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
+.release-emoji {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Neon Buttons */
