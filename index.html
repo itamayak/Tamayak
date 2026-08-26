@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TAMAYAK — official artist website. Music, culture, releases and sound from the in-between.">
+  <meta name="theme-color" content="#080808">
+  <title>TAMAYAK — Official Artist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="site-header">
+    <a class="logo" href="#top">TAMAYAK</a>
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav">
+      <a href="#releases">Releases</a>
+      <a href="#about">About</a>
+      <a href="#connect">Connect</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-glow"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">MUSIC · SOUL · CULTURE</p>
+        <h1>TAMAYAK</h1>
+        <p class="hero-sub">Soundscapes from the in-between.</p>
+        <div class="stream-buttons">
+          <a href="#" class="stream active">Spotify <span>↗</span></a>
+          <a href="#" class="stream">Apple Music <span>↗</span></a>
+          <a href="#" class="stream">YouTube <span>↗</span></a>
+        </div>
+      </div>
+      <div class="hero-art reveal delay-1">
+        <div class="portrait-placeholder">
+          <div class="portrait-ring"></div>
+          <div class="portrait-silhouette">
+            <div class="head"></div>
+            <div class="hair"></div>
+            <div class="body"></div>
+          </div>
+          <span class="portrait-note">TAMAYAK / 2026</span>
+        </div>
+      </div>
+      <div class="hero-scroll">SCROLL <span>↓</span></div>
+    </section>
+
+    <section id="releases" class="section releases">
+      <div class="section-label">
+        <span>01</span>
+        <i></i>
+        <h2>LATEST<br>RELEASES</h2>
+      </div>
+      <div class="section-action"><a href="#">VIEW ALL RELEASES →</a></div>
+
+      <div class="release-list">
+        <article class="release-card reveal">
+          <div class="cover cover-1"><span>01</span></div>
+          <div class="release-info">
+            <p class="release-type">SINGLE · 2026</p>
+            <h3>Damyo</h3>
+            <div class="wave" aria-hidden="true"></div>
+          </div>
+          <div class="release-meta"><span>03:47</span><a href="#">LISTEN ↗</a></div>
+        </article>
+
+        <article class="release-card reveal">
+          <div class="cover cover-2"><span>02</span></div>
+          <div class="release-info">
+            <p class="release-type">SINGLE · 2026</p>
+            <h3>Proud Kami Sa’yo</h3>
+            <div class="wave wave-2" aria-hidden="true"></div>
+          </div>
+          <div class="release-meta"><span>04:12</span><a href="#">LISTEN ↗</a></div>
+        </article>
+
+        <article class="release-card reveal">
+          <div class="cover cover-3"><span>03</span></div>
+          <div class="release-info">
+            <p class="release-type">SINGLE · 2026</p>
+            <h3>Maratabat</h3>
+            <div class="wave wave-3" aria-hidden="true"></div>
+          </div>
+          <div class="release-meta"><span>03:15</span><a href="#">LISTEN ↗</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="section-label">
+        <span>02</span>
+        <i></i>
+        <h2>ABOUT<br>TAMAYAK</h2>
+      </div>
+      <div class="about-copy reveal">
+        <p class="lead">A voice between worlds.</p>
+        <p>TAMAYAK is a multidisciplinary artist blending modern soul, experimental textures, rap and culture into immersive sonic experiences. Every release is a meeting point between emotion, identity and atmosphere.</p>
+        <p class="small">From intimate melodies to raw street energy, the sound keeps moving — always searching for something honest.</p>
+        <a class="text-link" href="#connect">READ FULL BIO →</a>
+      </div>
+      <div class="about-image reveal delay-1">
+        <div class="moon"></div>
+        <div class="water-person"></div>
+        <span>IDENTITY / SOUND / CULTURE</span>
+      </div>
+    </section>
+
+    <section id="connect" class="section connect">
+      <div class="section-label">
+        <span>03</span>
+        <i></i>
+        <h2>CONNECT</h2>
+      </div>
+      <div class="connect-grid">
+        <div class="socials reveal">
+          <p>Bookings, inquiries, collaborations.<br>Let’s create something timeless.</p>
+          <a href="#">Instagram <span>↗</span></a>
+          <a href="#">TikTok <span>↗</span></a>
+          <a href="#">YouTube <span>↗</span></a>
+          <a href="#">SoundCloud <span>↗</span></a>
+          <a href="#">X / Twitter <span>↗</span></a>
+        </div>
+        <form class="contact-form reveal delay-1" id="contactForm">
+          <p class="form-title">EMAIL</p>
+          <a class="email" href="mailto:tamayak.music@gmail.com">tamayak.music@gmail.com</a>
+          <div class="form-row">
+            <label>NAME<input required name="name" type="text" autocomplete="name"></label>
+            <label>EMAIL<input required name="email" type="email" autocomplete="email"></label>
+          </div>
+          <label>MESSAGE<textarea required name="message" rows="4"></textarea></label>
+          <button type="submit">SEND MESSAGE →</button>
+          <p id="formStatus" class="form-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 TAMAYAK</span>
+    <span>ALL RIGHTS RESERVED</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
